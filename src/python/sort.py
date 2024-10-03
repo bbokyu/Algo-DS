@@ -4,8 +4,7 @@ arr = [3,2,1,6,7,8,5,10,4, 9, 0, 69]
 
 
 # Merge Sort
-def mergeSort(arr):
-
+def merge_sort(arr):
     # Base Case
     if len(arr) <= 1:
         return arr
@@ -13,26 +12,25 @@ def mergeSort(arr):
     middle = len(arr) // 2
 
     # split
-    left = mergeSort(arr[0:middle])
-    right = mergeSort(arr[middle:])
+    left = merge_sort(arr[0:middle])
+    right = merge_sort(arr[middle:])
 
     merged = merge(left, right)
 
     return merged
 
-def merge(left, right):
-    
-    mergedArr = []
+def merge(left, right) -> any:
+    merged_arr = []
 
     i = 0
     j = 0
 
     while i < len(left) and j < len(right):
         if left[i] <= right[j]:
-            mergedArr.append(left[i])
+            merged_arr.append(left[i])
             i += 1
         else:
-            mergedArr.append(right[j])
+            merged_arr.append(right[j])
             j += 1
     
     mergedArr += left[i:] or right[j:]
@@ -41,8 +39,7 @@ def merge(left, right):
 
 # print(mergeSort(arr))
 
-
-def quickSort(arr):
+def quick_sort(arr):
 
     if len(arr) <= 1:
         return arr
@@ -59,10 +56,10 @@ def quickSort(arr):
         else:
             right.append(n)
     
-    sortedLeft = quickSort(left)
-    sortedRight = quickSort(right)
+    sorted_left = quick_sort(left)
+    sorted_right = quick_sort(right)
 
-    return sortedLeft + [pivot] + sortedRight
+    return sorted_left + [pivot] + sorted_right
 
-print(quickSort(arr))
+print(quick_sort(arr))
 
